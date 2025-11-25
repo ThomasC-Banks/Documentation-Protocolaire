@@ -1,46 +1,42 @@
-# 📝 API Users Management
+## 📝 API Users Management
 
-## 🌟 Description
-API pour gérer des utilisateurs.
-Développée avec **NestJS** et **MariaDB**
+### 📌 Description
 
-Fonctionnalités :  
+Cette API permet de gérer des utilisateurs via un CRUD complet :
 
-- 👤 Gestion des utilisateurs (CRUD)  
+POST /users – Créer un utilisateur
+GET /users – Récupérer tous les utilisateurs
+GET /users/:id – Récupérer un utilisateur par son ID
+PUT /users/:id – Mettre à jour un utilisateur
+DELETE /users/:id – Supprimer un utilisateur
 
-## 📌 Sommaire
-1. [Installation et création de la base de données](#installation-et-création-de-la-base-de-données-avec-mariadb)  
-2. [Schéma de la base de données](#schéma-de-la-base-de-donnée)
-3. [Installation et configuration de NestJS](#installation-et-configuration-de-nestjs)  
-4. [Lancement du serveur](#lancement-du-serveur)  
-5. 
+Elle est développée avec NestJS, utilise TypeORM, et se connecte à une base MariaDB.
+La documentation interactive de l’API est disponible via Swagger.
 
----
+## 📁 Cloner le projet
 
-## 🛠️ Étape 1 : Installation et création de la base de données avec MariaDB
+    git clone <URL_DU_REPO>
+    cd users-api
 
-    1-- Installer MariaDB dans le terminal:
-        sudo apt update
-        sudo apt install mariadb-server
-    2-- Démarrer MariaDB
-        sudo service mariadb start
-    3-- Sécuriser l'installation
-        sudo mysql_secure_installation
-    4--Se connecter à MariaDB
-        sudo mysql -u root -p
-    5-- Création de la base de données
-        CREATE DATABASE users_management;
-        Exit
-    6-- Création des tables
-        mysql -u root -p users_management < bdd.sql
+Prérequis !
 
---- Commandes pouvant être utiles:
-    SHOW TABLES;    -> affiche les tables
-    DESCRIBE Users; -> sert à afficher la structure de la table Users
+Avant de lancer l’API, vous devez avoir :
+    Node.js
+    npm ou yarn
+    NestJS CLI
 
-## 🗂️ Étape 2 : Schéma de la base de données
+MariaDB installé et en cours d’exécution
 
-📌 Table : users
+## 🗄️ Base de données
+
+Création des tables
+```
+mysql -u root -p users_management < bdd.sql
+```
+
+📊 Table : users
+
+```
 ┌─────────────────────────────────────────────────────────┐
 │                        users                             │
 ├───────────────────────────────┬──────────────────────────┤
@@ -53,21 +49,20 @@ Fonctionnalités :
 │ created_at                    │ TIMESTAMP (AUTO)         │
 │ updated_at                    │ TIMESTAMP (AUTO)         │
 └───────────────────────────────┴──────────────────────────
+```
 
-## 🛠️ Étape 3 : Installation de NestJS
+Le fichier bdd.sql fourni doit être importé dans MariaDB pour créer automatiquement la structure.
 
-    1-- Installer Node.js et NPM
-        sudo apt install -y nodejs npm
-    2--  Installer le CLI NestJS
-        npm install -g @nestjs/cli
-    3-- Configuration de MariaDB avec TypeORM, installation de TypeORM
-        npm install @nestjs/typeorm typeorm mysql2
-    4-- Lancement du serveur API NestJS
+## 🚀 Lancement du serveur
         npm run start:dev
 
-L'API est par défaut accessible sur http://localhost:3000.
+L’API sera accessible à :
+     http://localhost:3000
 
-## Étape 4 : Tester les requêtes d'API via Swagger
+## 📘 Documentation Swagger
+
+Une interface complète de tests est disponible à :
+    http://localhost:3000/api
 
 
 ```
