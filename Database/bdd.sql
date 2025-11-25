@@ -15,3 +15,9 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+---Créer ou donner les droits à l’utilisateur--
+
+CREATE USER 'user1'@'localhost' IDENTIFIED BY 'ton_mdp';
+GRANT ALL PRIVILEGES ON users_management.* TO 'user1'@'localhost';
+FLUSH PRIVILEGES;
