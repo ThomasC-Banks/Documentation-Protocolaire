@@ -5,6 +5,7 @@ import {
   IsString,
   IsDateString,
   Matches,
+  MinLength,
 } from 'class-validator';
 import { IsPastDate } from '../validator/is-past-date.validator';
 
@@ -42,6 +43,9 @@ export class UpdateUserDto {
   })
   @IsOptional()
   @IsString({ message: 'Le mot de passe doit être une chaîne de caractères' })
+  @MinLength(6, {
+    message: 'Le mot de passe doit contenir au moins 6 caractères',
+  })
   password?: string;
 
   @ApiPropertyOptional({
