@@ -1,34 +1,54 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsEmail, IsNotEmpty, IsOptional, IsString, IsDateString, Matches } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsDateString,
+  Matches,
+} from 'class-validator';
 import { IsPastDate } from '../validator/is-past-date.validator';
 
 export class CreateUserDto {
   @ApiProperty({ description: "Prénom de l'utilisateur", example: 'Luka' })
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: 'Le prénom ne peut pas être vide' })
+  @IsString({ message: 'Le prénom doit être une chaîne de caractères' })
   first_name: string;
 
   @ApiProperty({ description: "Nom de l'utilisateur", example: 'YasuoLover' })
-  @IsNotEmpty()
-  @IsString()
+  @IsNotEmpty({ message: 'Le nom ne peut pas être vide' })
+  @IsString({ message: 'Le nom doit être une chaîne de caractères' })
   name: string;
 
-  @ApiProperty({ description: "Adresse email de l'utilisateur", example: 'luka@example.com' })
-  @IsNotEmpty()
-  @IsEmail()
+  @ApiProperty({
+    description: "Adresse email de l'utilisateur",
+    example: 'luka@example.com',
+  })
+  @IsNotEmpty({ message: "L'email ne peut pas être vide" })
+  @IsEmail({}, { message: "L'email doit être une adresse email valide" })
   @Matches(/^[\w.-]+@([\w-]+\.)+(com|fr)$/, {
-    message: 'mail doit se terminer par .com ou .fr',
+    message: "L'email doit se terminer par .com ou .fr",
   })
   mail: string;
 
-  @ApiProperty({ description: "Mot de passe de l'utilisateur", example: '123456' })
-  @IsNotEmpty()
-  @IsString()
+  @ApiProperty({
+    description: "Mot de passe de l'utilisateur",
+    example: '123456',
+  })
+  @IsNotEmpty({ message: 'Le mot de passe ne peut pas être vide' })
+  @IsString({ message: 'Le mot de passe doit être une chaîne de caractères' })
   password: string;
 
-  @ApiProperty({ description: 'Date de naissance (optionnelle)', example: '1985-09-09', required: false })
+  @ApiProperty({
+    description: 'Date de naissance (optionnelle)',
+    example: '1985-09-09',
+    required: false,
+  })
   @IsOptional()
-  @IsDateString()
-  @IsPastDate({ message: 'La date de naissance ne peut pas être dans le futur' })
+  @IsDateString(
+    {},
+    { message: 'La date de naissance doit être une date ISO 8601 valide' },
+  )
+  @IsPastDate()
   birth_date?: string;
 }

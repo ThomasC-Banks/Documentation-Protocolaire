@@ -18,17 +18,16 @@ export function IsPastDate(validationOptions?: ValidationOptions) {
           } else if (typeof value === 'string' || typeof value === 'number') {
             date = new Date(value);
           } else {
-            // value est un objet ou type non supporté → invalide
-            return false;
+            return false; // type non valide
           }
 
           if (isNaN(date.getTime())) return false;
 
           const today = new Date();
-          return date < today; // Date doit être dans le passé
+          return date < today;
         },
         defaultMessage(): string {
-          return `${propertyName} ne peut pas être une date future.`;
+          return `La date de naissance ne peut pas être dans le futur`;
         },
       },
     });

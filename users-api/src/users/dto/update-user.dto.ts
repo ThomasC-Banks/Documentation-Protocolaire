@@ -14,7 +14,7 @@ export class UpdateUserDto {
     example: 'Tibo',
   })
   @IsOptional()
-  @IsString()
+  @IsString({ message: 'Le prénom doit être une chaîne de caractères' })
   first_name?: string;
 
   @ApiPropertyOptional({
@@ -22,7 +22,7 @@ export class UpdateUserDto {
     example: 'TiboGOAT',
   })
   @IsOptional()
-  @IsString()
+  @IsString({ message: 'Le nom doit être une chaîne de caractères' })
   name?: string;
 
   @ApiPropertyOptional({
@@ -30,9 +30,9 @@ export class UpdateUserDto {
     example: 'tibo.pedago@example.com',
   })
   @IsOptional()
-  @IsEmail()
+  @IsEmail({}, { message: "L'email doit être une adresse email valide" })
   @Matches(/^[\w.-]+@([\w-]+\.)+(com|fr)$/, {
-    message: 'mail doit se terminer par .com ou .fr',
+    message: "L'email doit se terminer par .com ou .fr",
   })
   mail?: string;
 
@@ -41,7 +41,7 @@ export class UpdateUserDto {
     example: 'PiedDeTibo123!',
   })
   @IsOptional()
-  @IsString()
+  @IsString({ message: 'Le mot de passe doit être une chaîne de caractères' })
   password?: string;
 
   @ApiPropertyOptional({
@@ -49,9 +49,10 @@ export class UpdateUserDto {
     example: '2000-05-19',
   })
   @IsOptional()
-  @IsDateString()
-  @IsPastDate({
-    message: 'La date de naissance ne peut pas être dans le futur',
-  })
+  @IsDateString(
+    {},
+    { message: 'La date de naissance doit être une date ISO 8601 valide' },
+  )
+  @IsPastDate()
   birth_date?: string;
 }
