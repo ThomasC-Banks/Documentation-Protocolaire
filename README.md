@@ -5,27 +5,6 @@
 Cette API permet de gérer des utilisateurs via un CRUD complet (Create, Read, Update, Delete).
 Elle est développée avec NestJS, un framework Node.js moderne et modulaire, et utilise TypeORM pour interagir avec une base MariaDB.
 
-Les fonctionnalités principales incluent :
-
-Création d’un utilisateur avec validation des champs, hachage sécurisé du mot de passe et vérification de la date de naissance.
-
-Lecture de tous les utilisateurs ou d’un utilisateur spécifique par son ID.
-
-Mise à jour des informations d’un utilisateur existant.
-
-Suppression d’un utilisateur.
-
-L’API intègre également :
-
-Gestion complète des erreurs avec messages en français pour une meilleure expérience développeur.
-
-Une documentation interactive Swagger pour tester facilement tous les endpoints.
-
-Support de configuration via fichier .env pour gérer la connexion à la base de données et les variables d’environnement.
-
-Elle est développée avec NestJS, utilise TypeORM, et se connecte à une base MariaDB.
-
-
 ## ✏️ Prérequis 
 
 - **Git** : [https://git-scm.com/downloads](https://git-scm.com/downloads)  
