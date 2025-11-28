@@ -18,6 +18,6 @@ CREATE TABLE users (
 
 ---Créer ou donner les droits à l’utilisateur--
 
-CREATE USER 'user1'@'localhost' IDENTIFIED BY 'ton_mdp';
-GRANT ALL PRIVILEGES ON users_management.* TO 'user1'@'localhost';
+CREATE USER 'user1'@'localhost' IDENTIFIED BY 'your_pwd';
+GRANT ALL PRIVILEGES ON users_management.* TO 'your_user'@'localhost';
 FLUSH PRIVILEGES;
