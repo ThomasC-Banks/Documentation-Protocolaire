@@ -5,8 +5,8 @@ import {
   IsString,
   IsDateString,
   Matches,
-  MinLength,
 } from 'class-validator';
+import { IsPastDate } from '../validator/is-past-date.validator';
 
 export class UpdateUserDto {
   @ApiPropertyOptional({
@@ -14,7 +14,7 @@ export class UpdateUserDto {
     example: 'Tibo',
   })
   @IsOptional()
-  @IsString({ message: 'first_name doit être une chaîne de caractères' })
+  @IsString()
   first_name?: string;
 
   @ApiPropertyOptional({
@@ -22,27 +22,26 @@ export class UpdateUserDto {
     example: 'TiboGOAT',
   })
   @IsOptional()
-  @IsString({ message: 'name doit être une chaîne de caractères' })
+  @IsString()
   name?: string;
 
   @ApiPropertyOptional({
-    description: 'Adresse email de l’utilisateur (doit finir par .com ou .fr)',
+    description: 'Adresse email de l’utilisateur',
     example: 'tibo.pedago@example.com',
   })
   @IsOptional()
-  @IsEmail({}, { message: 'mail doit être une adresse email valide' })
+  @IsEmail()
   @Matches(/^[\w.-]+@([\w-]+\.)+(com|fr)$/, {
     message: 'mail doit se terminer par .com ou .fr',
   })
   mail?: string;
 
   @ApiPropertyOptional({
-    description: 'Mot de passe de l’utilisateur (minimum 6 caractères)',
+    description: 'Mot de passe de l’utilisateur',
     example: 'PiedDeTibo123!',
   })
   @IsOptional()
-  @IsString({ message: 'password doit être une chaîne de caractères' })
-  @MinLength(6, { message: 'password doit contenir au moins 6 caractères' })
+  @IsString()
   password?: string;
 
   @ApiPropertyOptional({
@@ -50,6 +49,9 @@ export class UpdateUserDto {
     example: '2000-05-19',
   })
   @IsOptional()
-  @IsDateString({}, { message: 'birth_date doit être une date valide' })
+  @IsDateString()
+  @IsPastDate({
+    message: 'La date de naissance ne peut pas être dans le futur',
+  })
   birth_date?: string;
 }
