@@ -4,28 +4,26 @@
 
 Cette API permet de gérer des utilisateurs via un CRUD complet :
 
-POST /users – Créer un utilisateur
-GET /users – Récupérer tous les utilisateurs
-GET /users/:id – Récupérer un utilisateur par son ID
-PUT /users/:id – Mettre à jour un utilisateur
-DELETE /users/:id – Supprimer un utilisateur
+    POST /users – Créer un utilisateur
+    GET /users – Récupérer tous les utilisateurs
+    GET /users/:id – Récupérer un utilisateur par son ID
+    PUT /users/:id – Mettre à jour un utilisateur
+    DELETE /users/:id – Supprimer un utilisateur
 
 Elle est développée avec NestJS, utilise TypeORM, et se connecte à une base MariaDB.
 La documentation interactive de l’API est disponible via Swagger.
 
 ## 📁 Cloner le projet
 
-    git clone <URL_DU_REPO>
+    git clone git@rendu-git.etna-alternance.net:module-10138/activity-54462/group-1068371.git
     cd users-api
 
-Prérequis !
+## ✏️ Prérequis 
 
-Avant de lancer l’API, vous devez avoir :
-    Node.js
-    npm ou yarn
-    NestJS CLI
-
-MariaDB installé et en cours d’exécution
+    MariaDB : https://mariadb.org/download/
+    Node.js : https://nodejs.org/
+    npm (fourni avec Node.js) ou Yarn : https://classic.yarnpkg.com/lang/en/docs/install/
+    NestJS CLI : https://docs.nestjs.com/cli/overview
 
 ## 🗄️ Base de données
 
