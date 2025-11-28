@@ -33,7 +33,9 @@ Création des tables
 mysql -u root -p users_management < bdd.sql
 ```
 
-📊 Table : users
+📊 Table : users⚙️ Configuration de l’environnement
+
+Avant de lancer l’API, vous devez créer votre fichier .env à partir de l’exemple fourni :
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -51,6 +53,19 @@ mysql -u root -p users_management < bdd.sql
 ```
 
 Le fichier bdd.sql fourni doit être importé dans MariaDB pour créer automatiquement la structure.
+
+## ⚙️ Configuration de l’environnement
+
+Avant de lancer l’API, vous devez créer votre fichier .env à partir de l’exemple fourni :
+```
+cp .env.example .env
+```
+Ensuite, ouvrez le fichier .env et modifiez les variables de connexion à la base de données :
+
+    DB_USER : nom de l’utilisateur MariaDB
+    DB_PASSWORD : mot de passe de l’utilisateur MariaDB
+
+Assurez-vous que l’utilisateur et le mot de passe correspondent à votre configuration MariaDB.
 
 ## 🚀 Lancement du serveur
         npm run start:dev
