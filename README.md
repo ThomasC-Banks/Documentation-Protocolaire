@@ -20,7 +20,7 @@ La documentation interactive de l’API est disponible via Swagger.
 
 ## ✏️ Prérequis 
 
-    MariaDB : https://mariadb.org/download/
+    MariaDB : (https://mariadb.org/download/)
     Node.js : https://nodejs.org/
     npm (fourni avec Node.js) ou Yarn : https://classic.yarnpkg.com/lang/en/docs/install/
     NestJS CLI : https://docs.nestjs.com/cli/overview
