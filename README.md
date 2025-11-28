@@ -13,17 +13,19 @@ Cette API permet de gérer des utilisateurs via un CRUD complet :
 Elle est développée avec NestJS, utilise TypeORM, et se connecte à une base MariaDB.
 La documentation interactive de l’API est disponible via Swagger.
 
-## 📁 Cloner le projet
-
-    git clone git@rendu-git.etna-alternance.net:module-10138/activity-54462/group-1068371.git
-    cd users-api
-
 ## ✏️ Prérequis 
 
+
+- **Git** : [https://git-scm.com/downloads](https://git-scm.com/downloads)  
 - **MariaDB** : [Télécharger MariaDB](https://mariadb.org/download/)
 - **Node.js** : [Installer Node.js](https://nodejs.org/)
 - **npm** (fourni avec Node.js) ou **Yarn** : [Installer Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 - **NestJS CLI** : [Documentation NestJS CLI](https://docs.nestjs.com/cli/overview)
+
+## 📁 Cloner le projet
+
+    git clone git@rendu-git.etna-alternance.net:module-10138/activity-54462/group-1068371.git
+    cd users-api
 
 
 ## 🗄️ Base de données
@@ -35,7 +37,6 @@ mysql -u root -p users_management < bdd.sql
 
 📊 Table : users
 
-Avant de lancer l’API, vous devez créer votre fichier .env à partir de l’exemple fourni :
 
 ```
 ┌─────────────────────────────────────────────────────────┐
