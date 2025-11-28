@@ -68,7 +68,9 @@ Ensuite, ouvrez le fichier .env et modifiez les variables de connexion à la bas
 Assurez-vous que l’utilisateur et le mot de passe correspondent à votre configuration MariaDB.
 
 ## 🚀 Lancement du serveur
-        npm run start:dev
+```
+npm run start:dev
+```
 
 L’API sera accessible à :
      http://localhost:3000
