@@ -33,7 +33,7 @@ Création des tables
 mysql -u root -p users_management < bdd.sql
 ```
 
-📊 Table : users⚙️ Configuration de l’environnement
+📊 Table : users
 
 Avant de lancer l’API, vous devez créer votre fichier .env à partir de l’exemple fourni :
 
