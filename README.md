@@ -7,7 +7,7 @@ Elle est développée avec NestJS, un framework Node.js moderne et modulaire, et
 
 ## ✏️ Prérequis 
 
-- **Git** : [https://git-scm.com/downloads](https://git-scm.com/downloads)  
+- **Git** : [Installer de Git](https://git-scm.com/downloads)  
 - **MariaDB** : [Télécharger MariaDB](https://mariadb.org/download/)
 - **Node.js** : [Installer Node.js](https://nodejs.org/)
 - **npm** (fourni avec Node.js) ou **Yarn** : [Installer Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
@@ -20,6 +20,8 @@ Elle est développée avec NestJS, un framework Node.js moderne et modulaire, et
 
 
 ## 🗄️ Base de données
+
+Le fichier bdd.sql fourni doit être importé dans MariaDB pour créer automatiquement la structure.
 
 Création des tables
 ```
@@ -43,8 +45,6 @@ mysql -u root -p users_management < bdd.sql
 │ updated_at                    │ TIMESTAMP (AUTO)         │
 └───────────────────────────────┴──────────────────────────
 ```
-
-Le fichier bdd.sql fourni doit être importé dans MariaDB pour créer automatiquement la structure.
 
 ## ⚙️ Configuration de l’environnement
 
