@@ -1,92 +1,168 @@
-## 📝 API Users Management
+<div align="center">
 
-### 📌 Description
+# 📝 API Users Management
 
-Cette API permet de gérer des utilisateurs via un CRUD complet (Create, Read, Update, Delete).
-Elle est développée avec NestJS, un framework Node.js moderne et modulaire, et utilise TypeORM pour interagir avec une base MariaDB.
+**Documentation Protocolaire · ETNA**
 
-## ✏️ Prérequis 
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
+![TypeORM](https://img.shields.io/badge/TypeORM-FE0803?style=flat-square)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=flat-square&logo=mariadb&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)
+![Status](https://img.shields.io/badge/Status-Fonctionnel-brightgreen?style=flat-square)
 
-- **Git** : [Installer de Git](https://git-scm.com/downloads)  
-- **MariaDB** : [Télécharger MariaDB](https://mariadb.org/download/)
-- **Node.js** : [Installer Node.js](https://nodejs.org/)
-- **npm** (fourni avec Node.js) ou **Yarn** : [Installer Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
-- **NestJS CLI** : [Documentation NestJS CLI](https://docs.nestjs.com/cli/overview)
+</div>
 
-## 📁 Cloner le projet
+---
 
-    git clone git@rendu-git.etna-alternance.net:module-10138/activity-54462/group-1068371.git
-    cd users-api
+## 👤 Projet
 
+| **Projet solo** · ETNA | `corde_t` |
+|---|---|
+
+---
+
+## 🎯 Présentation
+
+API REST de gestion d'utilisateurs avec un **CRUD complet** (Create, Read, Update, Delete). Développée avec **NestJS** et **TypeORM**, elle interagit avec une base **MariaDB** et expose une documentation interactive via **Swagger**.
+
+**Endpoints disponibles :**
+```
+POST   /users         → Créer un utilisateur
+GET    /users         → Récupérer tous les utilisateurs
+GET    /users/:id     → Récupérer un utilisateur par ID
+PUT    /users/:id     → Mettre à jour un utilisateur
+DELETE /users/:id     → Supprimer un utilisateur
+```
+
+---
+
+## 🏗️ Architecture
+
+```
+Documentation-Protocolaire/
+├── users-api/
+│   └── src/
+│       └── users/    → module CRUD utilisateurs
+├── Database/
+│   └── bdd.sql       → schéma de la base de données
+└── .env.example      → variables d'environnement
+```
+
+**Flux de données :**
+```
+[Client HTTP] → NestJS (REST) → TypeORM → MariaDB
+                     ↓
+               Swagger /api
+```
+
+---
+
+## 🧩 Stack technique
+
+| Technologie | Rôle |
+|-------------|------|
+| NestJS + TypeScript | Framework API REST |
+| TypeORM | Liaison code ↔ base de données |
+| MariaDB | Persistance des données |
+| Swagger | Documentation interactive |
+
+---
 
 ## 🗄️ Base de données
 
-Le fichier bdd.sql fourni doit être importé dans MariaDB pour créer automatiquement la structure.
-
-Création des tables
-```
-mysql -u root -p users_management < bdd.sql
-```
-
-📊 Table : users
-
+**Table `users` :**
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                        users                             │
-├───────────────────────────────┬──────────────────────────┤
-│ id                            │ INT (PK, AUTO_INCREMENT) │
-│ first_name                    │ VARCHAR(255)             │
-│ name                          │ VARCHAR(255)             │
-│ mail                          │ VARCHAR(255) UNIQUE      │
-│ password                      │ VARCHAR(255)             │
-│ birth_date                    │ DATE                     │
-│ created_at                    │ TIMESTAMP (AUTO)         │
-│ updated_at                    │ TIMESTAMP (AUTO)         │
-└───────────────────────────────┴──────────────────────────
+┌───────────────┬──────────────────────────┐
+│ id            │ INT (PK, AUTO_INCREMENT) │
+│ first_name    │ VARCHAR(255)             │
+│ name          │ VARCHAR(255)             │
+│ mail          │ VARCHAR(255) UNIQUE      │
+│ password      │ VARCHAR(255)             │
+│ birth_date    │ DATE                     │
+│ created_at    │ TIMESTAMP (AUTO)         │
+│ updated_at    │ TIMESTAMP (AUTO)         │
+└───────────────┴──────────────────────────┘
 ```
 
-## ⚙️ Configuration de l’environnement
+---
 
-Avant de lancer l’API, vous devez créer votre fichier .env à partir de l’exemple fourni :
+## 🛠️ Prérequis
+
+<details>
+<summary><b>🗄️ MariaDB</b></summary>
+
+```bash
+sudo apt install mariadb-server
+sudo service mariadb start
+sudo mysql_secure_installation
 ```
+</details>
+
+<details>
+<summary><b>🟢 Node.js & NestJS</b></summary>
+
+```bash
+sudo apt install -y nodejs npm
+npm install -g @nestjs/cli
+```
+</details>
+
+---
+
+## 🚀 Lancement
+
+**1. Cloner le repo**
+```bash
+git clone https://github.com/ThomasC-Banks/Documentation-Protocolaire.git
+cd Documentation-Protocolaire
+```
+
+**2. Créer la base de données**
+```bash
+sudo mysql -u root -p
+```
+```sql
+CREATE DATABASE users_management;
+```
+```bash
+mysql -u root -p users_management < Database/bdd.sql
+```
+
+**3. Configurer l'environnement**
+```bash
 cp .env.example .env
 ```
-Ensuite, ouvrez le fichier .env et modifiez les variables de connexion à la base de données :
+> Éditer `.env` et renseigner `DB_USER` et `DB_PASSWORD`
 
-    DB_USER : nom de l’utilisateur MariaDB
-    DB_PASSWORD : mot de passe de l’utilisateur MariaDB
-
-Assurez-vous que l’utilisateur et le mot de passe correspondent à votre configuration MariaDB.
-
-## 🚀 Lancement du serveur
-```
+**4. Installer les dépendances et démarrer**
+```bash
+cd users-api
+npm install
 npm run start:dev
 ```
 
-L’API sera accessible à :
-     http://localhost:3000
+| Interface | URL |
+|-----------|-----|
+| 🔌 API | http://localhost:3000 |
+| 📘 Swagger | http://localhost:3000/api |
 
-## ⭐ Description du CRUD : 
+---
 
-Cette API constitue une base solide pour des projets nécessitant la gestion d’utilisateurs sécurisée et maintenable, prête à être étendue selon vos besoins.
+## ⚡ Commandes utiles
 
-    POST /users – Créer un utilisateur
-    GET /users – Récupérer tous les utilisateurs
-    GET /users/:id – Récupérer un utilisateur par son ID
-    PUT /users/:id – Mettre à jour un utilisateur
-    DELETE /users/:id – Supprimer un utilisateur
-
-## 📘 Documentation Swagger
-
-Une interface complète de tests est disponible à :
-    http://localhost:3000/api
-
-
+```bash
+SHOW TABLES;
+DESCRIBE users;
 ```
- ____  _ _    ____  _  _   __   _  _   __   ____ 
-(  _ \( \/ )  (_  _)/ )( \ /  \ ( \/ ) / _\ / ___)
- ) _ ( )  /     )(  ) __ ((  O )/ \/ \/    \\___ \
-(____/(__/     (__) \_)(_/ \__/ \_)(_/\_/\_/(____/
 
-```
+---
+
+<div align="center">
+
+*Projet réalisé à l'ETNA · NestJS · TypeORM · MariaDB · Swagger*
+
+`corde_t`
+
+</div>
